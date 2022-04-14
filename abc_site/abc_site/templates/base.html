@@ -6,14 +6,17 @@
 <title>
   {% block title %}
     <title>Untitled Document</title>
+    
   {% endblock title %}
 </title>
 <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <div id="wrapper">
   <header id="header">
     <div id="logo"><img src="{% static 'sygemeldt.webp' %}" width="200" height="70" alt=""/></div>
+    
       <span style="float: right;">
         {% if user.is_authenticated %}
           Hello, {{ user.username }}. <a href="{% url 'logout' %}?next=/">Log out</a>. 
@@ -21,17 +24,21 @@
           Not logged in. <a href="{% url 'login' %}?next=/">Log in</a>. 
         {% endif %}
       </span>
-    <div id="topbanner"><img src="{% static 'GIRAFBANNER.jpg' %}" width="800" height="200" alt=""/></div>    
+    <div id="topbanner"><img src="{% static 'GIRAFBANNER.jpg' %}" width="800" height="200" alt=""/></div> 
+      
   </header>
   <aside id="leftsidebar">
     <nav id="nav">
     <ul>
       {% block sidenav %}
+      <img src="{{ page.thumb.url }}"/> 
       <li>Menu 1</li><li>Menu 2</li><li>Menu 3</li>
+      
       {% endblock sidenav %}
       <li><a href="/contact">Contact Us</a></li>
       <li><a href="/quote/">Get a Quote</a></li>
       <li><a href="/quote/show">Show Quotes</a></li>
+      
     </ul>
     </nav>
   </aside>
@@ -39,6 +46,7 @@
       {% block content %}
       <h1>Welcome!</h1>
       <p>This is the site template</p>
+      
       {% endblock content %}  
   </section>
   <footer id="footer">Made by LMH</footer>
